@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outils naturalistes</title>
+    <meta
+      name="description"
+      content="Base de données d'outils open source conçus par et pour les naturalistes."
+    >
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <!-- En-tête éditorial de la page. -->
+      <header class="intro" aria-labelledby="page-title">
+        <h1 id="page-title">Outils naturalistes</h1>
+        <p>
+          Cette base de données recense de nombreux outils open source conçus
+          par et pour les naturalistes.
+        </p>
+      </header>
+
+      <!-- Recherche principale ; le filtrage instantané est géré dans assets/app.js. -->
+      <section class="search-band" aria-label="Recherche">
+        <label class="search-field">
+          <span>Recherche sémantique</span>
+          <input
+            id="search"
+            type="search"
+            name="search"
+            placeholder="Ex. cartographie botanique, inventaire faune, outil mobile..."
+          >
+        </label>
+      </section>
+
+      <!-- Menus de filtres remplis automatiquement depuis data/tools.csv. -->
+      <section class="filter-band" aria-label="Filtres">
+        <label class="select-field">
+          <span>Type</span>
+          <select id="type-filter" name="type" data-filter="type">
+            <option value="">Tous les types</option>
+          </select>
+        </label>
+
+        <label class="select-field">
+          <span>Thème</span>
+          <select id="topic-filter" name="topic" data-filter="topics">
+            <option value="">Tous les thèmes</option>
+          </select>
+        </label>
+
+        <label class="select-field">
+          <span>Plateforme</span>
+          <select id="platform-filter" name="platform" data-filter="platforms">
+            <option value="">Toutes les plateformes</option>
+          </select>
+        </label>
+
+        <label class="select-field">
+          <span>Statut</span>
+          <select id="status-filter" name="status" data-filter="status">
+            <option value="">Tous les statuts</option>
+          </select>
+        </label>
+
+        <label class="select-field">
+          <span>Licence</span>
+          <select id="license-filter" name="license" data-filter="license">
+            <option value="">Toutes les licences</option>
+          </select>
+        </label>
+      </section>
+
+      <!-- Résultats générés par JavaScript à partir du CSV. -->
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-heading">
+          <h2 id="results-title">Projets recensés</h2>
+          <span id="result-count">0 outil</span>
+        </div>
+
+        <div class="project-list" id="project-list" aria-live="polite">
+          <p class="loading-state">Chargement des projets...</p>
+        </div>
+      </section>
+
+      <!-- Pagination synchronisée avec la recherche et les filtres. -->
+      <nav
+        class="pagination pagination-bottom"
+        aria-label="Pagination des projets, bas de liste"
+      ></nav>
+    </main>
+  </body>
+</html>
